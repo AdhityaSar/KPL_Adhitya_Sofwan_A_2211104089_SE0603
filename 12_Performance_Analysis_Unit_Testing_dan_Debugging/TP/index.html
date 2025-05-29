@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Deteksi Tanda Bilangan</title>
+</head>
+<body>
+  <h2>Deteksi Tanda Bilangan</h2>
+  <input type="text" id="inputAngka" placeholder="Masukkan angka">
+  <button onclick="prosesInput()">Cek Tanda</button>
+  <p id="outputLabel"></p>
+
+  <script>
+    function CariTandaBilangan(a) {
+      if (a < 0) return "Negatif";
+      if (a > 0) return "Positif";
+      return "Nol";
+    }
+
+    function prosesInput() {
+      const input = document.getElementById("inputAngka").value;
+      const angka = parseInt(input);
+      const hasil = CariTandaBilangan(angka);
+      document.getElementById("outputLabel").innerText = hasil;
+    }
+  </script>
+</body>
+</html>

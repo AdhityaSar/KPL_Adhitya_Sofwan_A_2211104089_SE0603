@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pangkat Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Kalkulator Pangkat</h2>
+  <label>Input A (Base): </label><br />
+  <input type="number" id="inputA" /><br />
+
+  <label>Input B (Exponent): </label><br />
+  <input type="number" id="inputB" /><br />
+
+  <button onclick="hitungPangkat()">Hitung Pangkat</button>
+  <p id="outputLabel"></p>
+
+  <script>
+    function CariNilaiPangkat(a, b) {
+      // Aturan pengecekan khusus
+      if (b === 0) return 1;
+      if (b < 0) return -1;
+      if (b > 10 || a > 100) return -2;
+
+      let result = 1;
+      try {
+        for (let i = 0; i < b; i++) {
+          result = result * a;
+
+          if (!Number.isSafeInteger(result)) {
+            return -3;
+          }
+        }
+        return result;
+      } catch (err) {
+        return -3;
+      }
+    }
+
+    function hitungPangkat() {
+      const a = parseInt(document.getElementById("inputA").value);
+      const b = parseInt(document.getElementById("inputB").value);
+      const hasil = CariNilaiPangkat(a, b);
+      document.getElementById("outputLabel").innerText = `Hasil: ${hasil}`;
+    }
+  </script>
+</body>
+</html>
